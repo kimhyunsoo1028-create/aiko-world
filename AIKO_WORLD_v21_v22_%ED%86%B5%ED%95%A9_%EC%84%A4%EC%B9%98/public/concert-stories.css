@@ -1,0 +1,35 @@
+/* Bright green, responsive cards within MEMORY LANE */
+.aiko-concert-stories{margin:32px 0 48px;--acs-green:#188a52;--acs-line:#c8e8d0;font-family:inherit;color:#254b36}
+.acs-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:17px;flex-wrap:wrap}
+.acs-heading small{display:block;font-weight:800;letter-spacing:.15em;color:var(--acs-green);margin-bottom:6px}
+.acs-heading h3{font-size:clamp(23px,3vw,33px);font-weight:900;margin:0 0 7px}
+.acs-heading p{color:#517561;margin:0}
+.acs-controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:20px 0}
+.acs-controls select,.acs-controls input{font:inherit;min-height:43px;padding:9px 12px;border:1px solid #c8e0d0;border-radius:12px;background:white;color:#204c31}
+.acs-controls input{min-width:190px;flex:1}
+.acs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.acs-card{background:#fff;border:1px solid var(--acs-line);border-radius:18px;padding:20px;box-shadow:0 6px 19px #1a7f4a0c;min-width:0}
+.acs-date{color:var(--acs-green);font-size:12px;font-weight:900;letter-spacing:.07em}
+.acs-card h4{font-size:19px;margin:7px 0;line-height:1.45;overflow-wrap:anywhere}
+.acs-meta{color:#6a8976;font-size:12px;margin-bottom:12px}
+.acs-category{background:#e0f9e6;border:1px solid #bde8c8;padding:4px 9px;border-radius:99px;font-size:11px;margin-right:7px}
+.acs-card>button{cursor:pointer;background:#e9f9ed;color:#216f42;font-weight:850;border:1px solid #bce5c8;border-radius:12px;padding:9px 14px}
+.acs-detail{border-top:1px solid #e4efe7;padding-top:15px;margin-top:15px}
+.acs-detail[hidden]{display:none}
+.acs-notes{color:#53745e;font-size:13px;white-space:pre-line;line-height:1.6}
+.acs-list{padding-left:24px;margin:9px 0 14px;line-height:1.9}
+.acs-note{font-size:12px;color:#657e6b;border-left:3px solid #8bc89a;padding-left:10px}
+.acs-media{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.acs-media a{min-width:0;display:flex;flex-direction:column;gap:5px;text-decoration:none;color:#1e6941;font-size:12px;font-weight:700}
+.acs-media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:11px;background:#e6f9e9}
+.acs-media-caption{line-height:1.3;overflow-wrap:anywhere}
+.acs-btn{display:inline-block;border:0;border-radius:9px;background:#e8f8ec;color:#197446;font:inherit;padding:12px;cursor:pointer;width:100%;text-align:left}
+.acs-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:12px}
+.acs-links a{color:var(--acs-green);font-weight:800}
+.acs-empty{padding:24px;border-radius:12px;background:#f3fcf4;color:#678275;text-align:center}
+.acs-lightbox{border:0;border-radius:17px;padding:14px;max-width:min(94vw,1000px);max-height:94vh;background:#fff}
+.acs-lightbox::backdrop{background:#091f13bd}
+.acs-lightbox>button{display:block;margin-left:auto;margin-bottom:8px;border:0;border-radius:9px;padding:7px 12px;cursor:pointer;background:#def3e2;color:#1e603a}
+.acs-lightbox img{display:block;max-height:76vh;max-width:100%;object-fit:contain}
+.acs-lightbox iframe{display:block;width:min(85vw,900px);aspect-ratio:16/9;border:0}
+@media(max-width:730px){.acs-grid{grid-template-columns:1fr}.acs-media{grid-template-columns:repeat(2,minmax(0,1fr))}.aiko-concert-stories{margin:22px 0 32px}}

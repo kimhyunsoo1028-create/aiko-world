@@ -1,0 +1,14 @@
+#concertstories-panel[hidden]{display:none!important}
+#concertstories-panel .acs-fieldset{border:1px solid #cde7d2;border-radius:13px;padding:12px 14px;margin:11px 0;background:#fafffb}
+#concertstories-panel .acs-fieldset legend{font-weight:800;color:#21764a}
+#concertstories-panel .acs-media-item{border:1px solid #d3edda;border-radius:12px;background:#f7fdf8;padding:11px;margin:12px 0}
+#concertstories-panel .acs-media-item .acs-remove{color:#ad3651}
+#concertstories-panel .acs-stats{color:#47825d;font-size:12px}
+#concertstories-panel .acs-check{display:flex;gap:9px;align-items:center;font-weight:500}
+#concertstories-panel .acs-check input{width:auto;margin:0}
+#concertstories-panel .acs-preview{width:125px;max-height:105px;object-fit:contain;border-radius:8px}
+#concertstories-panel .acs-rows{margin-top:8px}
+#concertstories-panel .acs-sticky-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+#concertstories-panel p[role="status"]{padding:9px 12px;border-radius:9px;background:#eff9f0;min-height:27px}
+#concertstories-panel .acs-warning{font-size:12px;color:#8a5e2b}
+@media(max-width:780px){#concertstories-panel .layout{grid-template-columns:1fr}}

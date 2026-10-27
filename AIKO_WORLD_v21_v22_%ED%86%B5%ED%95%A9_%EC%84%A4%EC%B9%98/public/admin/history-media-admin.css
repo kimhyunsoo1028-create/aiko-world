@@ -1,0 +1,7 @@
+[data-pane="historymedia"]{margin-top:3px}
+[data-pane="historymedia"] .hm-preview{margin:10px 0 15px;min-height:58px;padding:11px;background:#f0faf2;border:1px solid #d3e9d9;border-radius:12px;display:flex;align-items:center;justify-content:center}
+[data-pane="historymedia"] .hm-preview img{width:min(100%,350px);max-height:245px;object-fit:contain;border-radius:8px}
+[data-pane="historymedia"] .hm-preview a{color:#167c47;font-size:13px;font-weight:700}
+[data-pane="historymedia"] .hm-publish{display:flex;align-items:center;gap:10px;padding:9px 0}
+[data-pane="historymedia"] .hm-publish input{width:auto;margin:0}
+[data-pane="historymedia"] [hidden]{display:none!important}
