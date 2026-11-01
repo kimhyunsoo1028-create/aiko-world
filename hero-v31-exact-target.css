@@ -93,6 +93,7 @@
   }
   .hero-visual::after {
     content:"Maureen\A Aiko Sumida (OVAL SISTEM)";
+    z-index:1;
     white-space:pre-line;
     background:none;
     left:41%;
