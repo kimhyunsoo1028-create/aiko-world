@@ -10,25 +10,32 @@
   background:linear-gradient(100deg,#f2f9ee 0%,#edf7e7 50%,#eaf5e4 100%);
 }
 
-/* Constrain the real grayscale Maureen/RENT still to the upper middle.
-   The image must NOT stretch across the headline or lower descriptions. */
+/* One full-width background layer: no cropped image-box edges.
+   The elliptical alpha mask feathers the source image before its natural
+   left, right, and bottom edges can become visible. */
 .hero::before {
   content:"";
-  display:block;
   position:absolute;
+  inset:0;
+  display:block;
   z-index:0;
   pointer-events:none;
-  top:0;
-  left:clamp(290px,21.5vw,370px);
-  width:clamp(810px,61vw,1030px);
-  height:390px;
-  inset-block-end:auto;
-  background:url("images/hero-rent-maureen-bg.webp") no-repeat left top;
-  background-size:100% auto;
-  opacity:.78;
-  filter:grayscale(1) blur(1.6px) brightness(1.16) contrast(1.1);
-  -webkit-mask-image:radial-gradient(ellipse 63% 91% at 40% 33%,#000 8%,rgba(0,0,0,.92) 43%,rgba(0,0,0,.34) 76%,transparent 100%);
-  mask-image:radial-gradient(ellipse 63% 91% at 40% 33%,#000 8%,rgba(0,0,0,.92) 43%,rgba(0,0,0,.34) 76%,transparent 100%);
+  background-image:url("images/hero-rent-maureen-bg.webp");
+  background-repeat:no-repeat;
+  background-size:min(1260px,98vw) auto;
+  background-position:calc(50% - 25px) top;
+  opacity:.72;
+  filter:grayscale(1) blur(2.1px) brightness(1.19) contrast(1.06);
+  -webkit-mask-image:radial-gradient(ellipse 47% 39% at 57% 18%,
+    #000 0%,rgba(0,0,0,.96) 30%,
+    rgba(0,0,0,.57) 63%,
+    rgba(0,0,0,.12) 85%,
+    transparent 100%);
+  mask-image:radial-gradient(ellipse 47% 39% at 57% 18%,
+    #000 0%,rgba(0,0,0,.96) 30%,
+    rgba(0,0,0,.57) 63%,
+    rgba(0,0,0,.12) 85%,
+    transparent 100%);
 }
 .hero::after {
   content:"";
@@ -48,43 +55,12 @@
 .hero > .hero-deco { z-index:0; }
 .hero-content {position:relative;z-index:3;}
 .hero-visual {position:relative;isolation:isolate;}
-/* The reference separates the RENT logo and Maureen credit from the face.
-   All three use the same supplied original poster image, with independent crops.
-   Both layers stay behind the real five collage photos and all links. */
+/* Single background source already carries RENT and Maureen credits.
+   Remove independent cropped duplicates that looked like dark rectangles. */
 .hero-visual::before,
 .hero-visual::after {
-  content:"";
-  display:block;
-  position:absolute;
-  pointer-events:none;
-  z-index:0;
-  background-image:url("images/hero-rent-maureen-bg.webp");
-  background-repeat:no-repeat;
-  filter:grayscale(1) blur(1.5px) brightness(1.22);
-}
-.hero-visual::before {
-  width:205px;
-  height:84px;
-  left:-15%;
-  top:31%;
-  background-size:750px auto;
-  background-position:-302px -130px;
-  opacity:.53;
-  transform:rotate(-8deg);
-  -webkit-mask-image:radial-gradient(ellipse 65% 69% at 50% 50%,#000 30%,transparent 100%);
-  mask-image:radial-gradient(ellipse 65% 69% at 50% 50%,#000 30%,transparent 100%);
-}
-.hero-visual::after {
-  width:315px;
-  height:104px;
-  left:48%;
-  top:-7px;
-  background-size:760px auto;
-  background-position:-458px -107px;
-  opacity:.41;
-  transform:rotate(-5deg);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 89%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 14%,#000 89%,transparent);
+  content:none;
+  display:none;
 }
 .hero-visual .photo-block {
   display:block;
@@ -157,7 +133,11 @@
   .hero-visual .visual-caption {left:47%;bottom:2px;z-index:7;}
 }
 @media (min-width:1550px) {
-  .hero::before {left:clamp(365px,22vw,410px);width:1050px;height:440px;opacity:.70;}
+  .hero::before {
+    background-size:min(1370px,86vw) auto;
+    background-position:calc(50% - 50px) top;
+    opacity:.73;
+  }
   .hero > .hero-grid {min-height:764px;}
   .hero-visual {width:calc(100% + 90px);height:715px;margin-left:-8px;}
   .hero-visual .photo-five {left:23%;top:70px;width:58%;height:88%;}
@@ -167,12 +147,13 @@
   .hero-visual .photo-four {bottom:60px;}
   .hero-visual .sticker {top:25px;}
   .hero-visual .visual-label {top:25px;}
-  .hero-visual::before {left:-15%;top:31%;}
-  .hero-visual::after {left:45%;top:-14px;}
 }
 @media (min-width:921px) and (max-width:1119px) {
-  .hero::before {left:25%;width:76%;opacity:.36;}
-  .hero-visual::after {opacity:.26;}
+  .hero::before {
+    background-size:1120px auto;
+    background-position:calc(50% - 25px) top;
+    opacity:.50;
+  }
   .hero-visual .photo-five {left:35%;top:84px;width:48%;height:76%;z-index:6;transform:rotate(3deg);}
   .hero-visual .photo-three {left:16%;top:94px;width:27%;height:43%;z-index:2;transform:rotate(-4deg);}
   .hero-visual .photo-two {right:0;top:106px;width:29%;height:40%;z-index:3;transform:rotate(7deg);}
@@ -183,12 +164,12 @@
 @media (max-width:920px) {
   .hero-visual::before,.hero-visual::after {display:none;}
   .hero::before {
-    left:17%;
-    top:0;
-    width:85%;
-    height:315px;
-    opacity:.25;
+    background-size:1100px auto;
+    background-position:calc(50% - 70px) top;
+    opacity:.26;
     filter:grayscale(1) blur(5px) brightness(1.3);
+    -webkit-mask-image:radial-gradient(ellipse 55% 42% at 58% 17%,#000 0%,rgba(0,0,0,.65) 55%,transparent 100%);
+    mask-image:radial-gradient(ellipse 55% 42% at 58% 17%,#000 0%,rgba(0,0,0,.65) 55%,transparent 100%);
   }
   .hero::after {background:linear-gradient(180deg,rgba(243,250,239,.60) 0%,rgba(243,250,239,.42) 54%,rgba(243,250,239,.18) 100%);}
   .hero-visual .photo-five {left:35%;top:69px;width:48%;height:76%;z-index:6;transform:rotate(3deg);}
@@ -200,7 +181,12 @@
   .hero-visual .visual-caption {left:45%;bottom:0;z-index:7;}
 }
 @media (max-width:700px) {
-  .hero::before {left:3%;top:0;width:107%;height:285px;opacity:.19;filter:grayscale(1) blur(7px) brightness(1.3);}
+  .hero::before {
+    background-size:920px auto;
+    background-position:calc(50% - 40px) top;
+    opacity:.18;
+    filter:grayscale(1) blur(7px) brightness(1.3);
+  }
   .hero::after {background:linear-gradient(180deg,rgba(243,250,239,.76),rgba(243,250,239,.37) 52%,rgba(243,250,239,.12));}
   .hero-visual {height:470px;margin:10px auto 2px;width:min(100%,510px);}
   .hero-visual .photo-five {left:35%;top:65px;width:48%;height:76%;}
