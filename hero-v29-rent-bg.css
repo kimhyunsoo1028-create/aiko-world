@@ -1,0 +1,27 @@
+/* AIKO WORLD v29: clearer, recognizable RENT/Maureen hero background. */
+.hero::before {
+  background-image: url('images/hero-rent-maureen-bg.webp');
+  background-repeat: no-repeat;
+  background-size: min(1370px, 107vw) auto;
+  background-position: center 2%;
+  opacity: .82;
+  filter: grayscale(1) blur(2.5px) contrast(1.18);
+  -webkit-mask-image: radial-gradient(ellipse 73% 75% at 56% 27%, #000 12%, rgba(0,0,0,.95) 43%, rgba(0,0,0,.60) 68%, transparent 98%);
+  mask-image: radial-gradient(ellipse 73% 75% at 56% 27%, #000 12%, rgba(0,0,0,.95) 43%, rgba(0,0,0,.60) 68%, transparent 98%);
+}
+.hero::after {
+  background: linear-gradient(90deg, rgba(239,248,231,.92) 0%, rgba(239,248,231,.82) 29%, rgba(239,248,231,.34) 46%, rgba(239,248,231,.09) 64%, rgba(239,248,231,.20) 100%);
+}
+@media (max-width: 920px) {
+  .hero::before { background-size: 130% auto; background-position: center 5%; opacity: .66; }
+  .hero::after { background: linear-gradient(180deg, rgba(239,248,231,.76), rgba(239,248,231,.24) 52%, rgba(239,248,231,.40)); }
+}
+@media (max-width: 700px) {
+  .hero::before {
+    background-size: max(850px, 150vw) auto;
+    background-position: 54% 44%;
+    opacity: .58;
+    filter: grayscale(1) blur(2.5px) contrast(1.16);
+  }
+  .hero::after { background: linear-gradient(180deg, rgba(239,248,231,.85) 0%, rgba(239,248,231,.63) 38%, rgba(239,248,231,.28) 67%, rgba(239,248,231,.50) 100%); }
+}
