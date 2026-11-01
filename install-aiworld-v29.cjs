@@ -20,5 +20,14 @@ const tag = '<link rel="stylesheet" href="hero-v29-rent-bg.css?v=29.1">';
 const oldLink = /<link\b[^>]*href=["'][^"']*hero-v29-rent-bg\.css[^"']*["'][^>]*>/i;
 if (oldLink.test(html)) html = html.replace(oldLink, tag);
 else html = html.replace('</head>', tag + '\n</head>');
+// v30 visual correction runs after v29 without requiring a new Netlify command.
+const v30 = path.join(root, 'hero-v30-match-mockup.css');
+if (fs.existsSync(v30)) {
+  fs.copyFileSync(v30, path.join(site, 'hero-v30-match-mockup.css'));
+  const v30Tag = '<link rel="stylesheet" href="hero-v30-match-mockup.css?v=30.2">';
+  const v30Link = /<link\b[^>]*href=["'][^"']*hero-v30-match-mockup\.css[^"']*["'][^>]*>/i;
+  if (v30Link.test(html)) html = html.replace(v30Link, v30Tag);
+  else html = html.replace('</head>', v30Tag + '\n</head>');
+}
 fs.writeFileSync(page, html, 'utf8');
-console.log('AIKO WORLD v29: background contrast and visibility corrected; 5 cards and all other content preserved.');
+console.log('AIKO WORLD v29/v30: corrected blurred Maureen background and aligned five photo cards; previous data preserved.');
