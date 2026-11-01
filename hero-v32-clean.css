@@ -25,10 +25,10 @@
   inset-block-end:auto;
   background:url("images/hero-rent-maureen-bg.webp") no-repeat left top;
   background-size:100% auto;
-  opacity:.54;
-  filter:grayscale(1) blur(2.2px) brightness(1.28) contrast(.9);
-  -webkit-mask-image:radial-gradient(ellipse 62% 84% at 52% 24%,#000 6%,rgba(0,0,0,.91) 43%,rgba(0,0,0,.38) 74%,transparent 100%);
-  mask-image:radial-gradient(ellipse 62% 84% at 52% 24%,#000 6%,rgba(0,0,0,.91) 43%,rgba(0,0,0,.38) 74%,transparent 100%);
+  opacity:.78;
+  filter:grayscale(1) blur(1.6px) brightness(1.16) contrast(1.1);
+  -webkit-mask-image:radial-gradient(ellipse 63% 91% at 40% 33%,#000 8%,rgba(0,0,0,.92) 43%,rgba(0,0,0,.34) 76%,transparent 100%);
+  mask-image:radial-gradient(ellipse 63% 91% at 40% 33%,#000 8%,rgba(0,0,0,.92) 43%,rgba(0,0,0,.34) 76%,transparent 100%);
 }
 .hero::after {
   content:"";
@@ -48,10 +48,43 @@
 .hero > .hero-deco { z-index:0; }
 .hero-content {position:relative;z-index:3;}
 .hero-visual {position:relative;isolation:isolate;}
-/* Suppress duplicated synthetic RENT/text pseudo-layers from older versions. */
-.hero-visual::before,.hero-visual::after {
-  content:none!important;
-  display:none!important;
+/* The reference separates the RENT logo and Maureen credit from the face.
+   All three use the same supplied original poster image, with independent crops.
+   Both layers stay behind the real five collage photos and all links. */
+.hero-visual::before,
+.hero-visual::after {
+  content:"";
+  display:block;
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+  background-image:url("images/hero-rent-maureen-bg.webp");
+  background-repeat:no-repeat;
+  filter:grayscale(1) blur(1.5px) brightness(1.22);
+}
+.hero-visual::before {
+  width:205px;
+  height:84px;
+  left:-15%;
+  top:31%;
+  background-size:750px auto;
+  background-position:-302px -130px;
+  opacity:.53;
+  transform:rotate(-8deg);
+  -webkit-mask-image:radial-gradient(ellipse 65% 69% at 50% 50%,#000 30%,transparent 100%);
+  mask-image:radial-gradient(ellipse 65% 69% at 50% 50%,#000 30%,transparent 100%);
+}
+.hero-visual::after {
+  width:315px;
+  height:104px;
+  left:48%;
+  top:-7px;
+  background-size:760px auto;
+  background-position:-458px -107px;
+  opacity:.41;
+  transform:rotate(-5deg);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 89%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 14%,#000 89%,transparent);
 }
 .hero-visual .photo-block {
   display:block;
@@ -86,7 +119,7 @@
 /* The reference composition uses a centered 82%-width two-column grid. */
 @media (min-width:1120px) {
   .hero > .hero-grid {
-    width:82%;
+    width:80%;
     max-width:1450px;
     grid-template-columns:minmax(0,1fr) minmax(0,1fr);
     gap:27px;
@@ -97,10 +130,10 @@
   .hero-visual {
     width:calc(100% + 55px);
     height:623px;
-    margin:0 0 0 -46px;
+    margin:0 0 0 -35px;
   }
   .hero-visual .photo-five {
-    left:23%;top:61px;width:58%;height:81%;z-index:6;
+    left:23%;top:61px;width:54%;height:81%;z-index:6;
     transform:rotate(3deg);padding:7px;
   }
   .hero-visual .photo-three {
@@ -112,11 +145,11 @@
     transform:rotate(-7deg);
   }
   .hero-visual .photo-two {
-    right:0%;left:auto;top:120px;width:25%;height:35%;z-index:3;
+    right:1%;left:auto;top:120px;width:27%;height:35%;z-index:3;
     transform:rotate(7deg);
   }
   .hero-visual .photo-four {
-    right:1%;left:auto;top:auto;bottom:75px;width:26%;height:38%;z-index:4;
+    right:1%;left:auto;top:auto;bottom:75px;width:27%;height:38%;z-index:4;
     transform:rotate(7deg);
   }
   .hero-visual .sticker {left:25%;top:20px;width:90px;height:90px;z-index:8;}
@@ -124,7 +157,7 @@
   .hero-visual .visual-caption {left:47%;bottom:2px;z-index:7;}
 }
 @media (min-width:1550px) {
-  .hero::before {left:clamp(365px,22vw,410px);width:1050px;height:440px;opacity:.57;}
+  .hero::before {left:clamp(365px,22vw,410px);width:1050px;height:440px;opacity:.70;}
   .hero > .hero-grid {min-height:764px;}
   .hero-visual {width:calc(100% + 90px);height:715px;margin-left:-8px;}
   .hero-visual .photo-five {left:23%;top:70px;width:58%;height:88%;}
@@ -134,9 +167,12 @@
   .hero-visual .photo-four {bottom:60px;}
   .hero-visual .sticker {top:25px;}
   .hero-visual .visual-label {top:25px;}
+  .hero-visual::before {left:-15%;top:31%;}
+  .hero-visual::after {left:45%;top:-14px;}
 }
 @media (min-width:921px) and (max-width:1119px) {
   .hero::before {left:25%;width:76%;opacity:.36;}
+  .hero-visual::after {opacity:.26;}
   .hero-visual .photo-five {left:35%;top:84px;width:48%;height:76%;z-index:6;transform:rotate(3deg);}
   .hero-visual .photo-three {left:16%;top:94px;width:27%;height:43%;z-index:2;transform:rotate(-4deg);}
   .hero-visual .photo-two {right:0;top:106px;width:29%;height:40%;z-index:3;transform:rotate(7deg);}
@@ -145,6 +181,7 @@
   .hero-visual .sticker {left:33%;top:6px;z-index:8;}
 }
 @media (max-width:920px) {
+  .hero-visual::before,.hero-visual::after {display:none;}
   .hero::before {
     left:17%;
     top:0;
