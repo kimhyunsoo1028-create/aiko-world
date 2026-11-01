@@ -1,0 +1,189 @@
+/* AIKO WORLD v32 — single-source homepage hero rebuild.
+   Reference: approved 1672px mockup.
+   Scope: ONLY .hero; all gallery, calendar, admin and Supabase data remain unchanged.
+   Replaces superseded v28, v29, v30 and v31 hero CSS links. */
+
+.hero {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:linear-gradient(100deg,#f2f9ee 0%,#edf7e7 50%,#eaf5e4 100%);
+}
+
+/* Constrain the real grayscale Maureen/RENT still to the upper middle.
+   The image must NOT stretch across the headline or lower descriptions. */
+.hero::before {
+  content:"";
+  display:block;
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  top:0;
+  left:clamp(290px,21.5vw,370px);
+  width:clamp(810px,61vw,1030px);
+  height:390px;
+  inset-block-end:auto;
+  background:url("images/hero-rent-maureen-bg.webp") no-repeat left top;
+  background-size:100% auto;
+  opacity:.54;
+  filter:grayscale(1) blur(2.2px) brightness(1.28) contrast(.9);
+  -webkit-mask-image:radial-gradient(ellipse 62% 84% at 52% 24%,#000 6%,rgba(0,0,0,.91) 43%,rgba(0,0,0,.38) 74%,transparent 100%);
+  mask-image:radial-gradient(ellipse 62% 84% at 52% 24%,#000 6%,rgba(0,0,0,.91) 43%,rgba(0,0,0,.38) 74%,transparent 100%);
+}
+.hero::after {
+  content:"";
+  display:block;
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,
+    rgba(243,250,239,.64) 0%,
+    rgba(243,250,239,.48) 17%,
+    rgba(243,250,239,.16) 34%,
+    rgba(243,250,239,.03) 55%,
+    rgba(243,250,239,.13) 100%);
+}
+.hero > .hero-grid { position:relative;z-index:1; }
+.hero > .hero-deco { z-index:0; }
+.hero-content {position:relative;z-index:3;}
+.hero-visual {position:relative;isolation:isolate;}
+/* Suppress duplicated synthetic RENT/text pseudo-layers from older versions. */
+.hero-visual::before,.hero-visual::after {
+  content:none!important;
+  display:none!important;
+}
+.hero-visual .photo-block {
+  display:block;
+  box-sizing:border-box;
+  padding:6px;
+  background:rgba(255,255,255,.98);
+  overflow:hidden;
+  border-radius:5px;
+  filter:none;
+  box-shadow:0 16px 26px rgba(29,67,44,.18),0 2px 7px rgba(29,67,44,.09);
+  transition:transform .27s ease,box-shadow .27s ease;
+}
+.hero-visual .photo-block img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+}
+.hero-visual .photo-five img {
+  object-fit:contain;
+  object-position:center center;
+  background:#f7f7f7;
+}
+.hero-visual .photo-block:hover {
+  transform:translateY(-8px) rotate(0deg);
+  z-index:9;
+  box-shadow:0 20px 30px rgba(29,67,44,.21);
+}
+.hero-visual .visual-shape-1 {width:430px;height:430px;left:5%;top:105px;opacity:.92;}
+
+/* The reference composition uses a centered 82%-width two-column grid. */
+@media (min-width:1120px) {
+  .hero > .hero-grid {
+    width:82%;
+    max-width:1450px;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:27px;
+    min-height:clamp(650px,45.8vw,767px);
+  }
+  .hero-content {padding:45px 0 35px;}
+  .hero h1 {font-size:clamp(68px,5.1vw,84px);}
+  .hero-visual {
+    width:calc(100% + 55px);
+    height:623px;
+    margin:0 0 0 -46px;
+  }
+  .hero-visual .photo-five {
+    left:23%;top:61px;width:58%;height:81%;z-index:6;
+    transform:rotate(3deg);padding:7px;
+  }
+  .hero-visual .photo-three {
+    left:4%;top:121px;width:25%;height:41%;z-index:2;
+    transform:rotate(-4deg);
+  }
+  .hero-visual .photo-one {
+    left:-2%;top:auto;bottom:72px;width:27%;height:36%;z-index:4;
+    transform:rotate(-7deg);
+  }
+  .hero-visual .photo-two {
+    right:0%;left:auto;top:120px;width:25%;height:35%;z-index:3;
+    transform:rotate(7deg);
+  }
+  .hero-visual .photo-four {
+    right:1%;left:auto;top:auto;bottom:75px;width:26%;height:38%;z-index:4;
+    transform:rotate(7deg);
+  }
+  .hero-visual .sticker {left:25%;top:20px;width:90px;height:90px;z-index:8;}
+  .hero-visual .visual-label {right:0%;top:20px;z-index:8;}
+  .hero-visual .visual-caption {left:47%;bottom:2px;z-index:7;}
+}
+@media (min-width:1550px) {
+  .hero::before {left:clamp(365px,22vw,410px);width:1050px;height:440px;opacity:.57;}
+  .hero > .hero-grid {min-height:764px;}
+  .hero-visual {width:calc(100% + 90px);height:715px;margin-left:-8px;}
+  .hero-visual .photo-five {left:23%;top:70px;width:58%;height:88%;}
+  .hero-visual .photo-three {top:143px;}
+  .hero-visual .photo-two {top:135px;}
+  .hero-visual .photo-one {bottom:68px;}
+  .hero-visual .photo-four {bottom:60px;}
+  .hero-visual .sticker {top:25px;}
+  .hero-visual .visual-label {top:25px;}
+}
+@media (min-width:921px) and (max-width:1119px) {
+  .hero::before {left:25%;width:76%;opacity:.36;}
+  .hero-visual .photo-five {left:35%;top:84px;width:48%;height:76%;z-index:6;transform:rotate(3deg);}
+  .hero-visual .photo-three {left:16%;top:94px;width:27%;height:43%;z-index:2;transform:rotate(-4deg);}
+  .hero-visual .photo-two {right:0;top:106px;width:29%;height:40%;z-index:3;transform:rotate(7deg);}
+  .hero-visual .photo-one {left:1%;bottom:29px;width:31%;height:42%;z-index:4;transform:rotate(-7deg);}
+  .hero-visual .photo-four {right:0;bottom:23px;width:29%;height:40%;z-index:4;transform:rotate(7deg);}
+  .hero-visual .sticker {left:33%;top:6px;z-index:8;}
+}
+@media (max-width:920px) {
+  .hero::before {
+    left:17%;
+    top:0;
+    width:85%;
+    height:315px;
+    opacity:.25;
+    filter:grayscale(1) blur(5px) brightness(1.3);
+  }
+  .hero::after {background:linear-gradient(180deg,rgba(243,250,239,.60) 0%,rgba(243,250,239,.42) 54%,rgba(243,250,239,.18) 100%);}
+  .hero-visual .photo-five {left:35%;top:69px;width:48%;height:76%;z-index:6;transform:rotate(3deg);}
+  .hero-visual .photo-three {left:14%;top:78px;width:31%;height:39%;z-index:2;transform:rotate(-4deg);}
+  .hero-visual .photo-two {right:0;top:83px;width:31%;height:40%;z-index:3;transform:rotate(7deg);}
+  .hero-visual .photo-one {left:1%;bottom:29px;width:31%;height:42%;z-index:4;transform:rotate(-7deg);}
+  .hero-visual .photo-four {right:0;bottom:23px;width:31%;height:40%;z-index:4;transform:rotate(7deg);}
+  .hero-visual .sticker {left:33%;top:6px;z-index:8;}
+  .hero-visual .visual-caption {left:45%;bottom:0;z-index:7;}
+}
+@media (max-width:700px) {
+  .hero::before {left:3%;top:0;width:107%;height:285px;opacity:.19;filter:grayscale(1) blur(7px) brightness(1.3);}
+  .hero::after {background:linear-gradient(180deg,rgba(243,250,239,.76),rgba(243,250,239,.37) 52%,rgba(243,250,239,.12));}
+  .hero-visual {height:470px;margin:10px auto 2px;width:min(100%,510px);}
+  .hero-visual .photo-five {left:35%;top:65px;width:48%;height:76%;}
+  .hero-visual .photo-one {width:31%;height:42%;left:1%;bottom:24px;}
+  .hero-visual .photo-two {width:31%;height:40%;right:0;top:85px;}
+  .hero-visual .photo-three {width:31%;height:39%;left:14%;top:89px;}
+  .hero-visual .photo-four {width:31%;height:40%;right:0;bottom:23px;}
+  .hero-visual .sticker {width:69px;height:69px;left:33%;top:6px;}
+}
+@media (max-width:410px) {
+  .hero-visual {height:365px;}
+  .hero-visual .photo-block {padding:3px;}
+  .hero-visual .photo-five {left:34%;width:49%;height:75%;top:52px;padding:4px;}
+  .hero-visual .photo-one {height:41%;bottom:21px;}
+  .hero-visual .photo-two {height:40%;top:67px;}
+  .hero-visual .photo-three {height:39%;top:69px;}
+  .hero-visual .photo-four {height:39%;bottom:19px;}
+  .hero-visual .sticker {width:56px;height:56px;font-size:11px;left:33%;top:1px;}
+  .hero-visual .visual-label {font-size:8px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero-visual .photo-block {transition:none;}
+}
