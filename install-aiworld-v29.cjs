@@ -34,7 +34,7 @@ if (fs.existsSync(v30)) {
 const v31 = path.join(root, 'hero-v31-exact-target.css');
 if (!fs.existsSync(v31)) throw new Error('v31 stylesheet missing from GitHub checkout');
 fs.copyFileSync(v31, path.join(site, 'hero-v31-exact-target.css'));
-const v31Tag = '<link rel="stylesheet" href="hero-v31-exact-target.css?v=31.1">';
+const v31Tag = '<link rel="stylesheet" href="hero-v31-exact-target.css?v=31.2">';
 const v31Link = /<link\b[^>]*href=["'][^"']*hero-v31-exact-target\.css[^"']*["'][^>]*>/i;
 if (v31Link.test(html)) html = html.replace(v31Link, v31Tag);
 else html = html.replace('</head>', v31Tag + '\n</head>');
