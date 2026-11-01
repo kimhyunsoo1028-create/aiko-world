@@ -92,7 +92,7 @@
     background:linear-gradient(90deg,rgba(239,248,231,.88) 0%,rgba(239,248,231,.52) 23%,rgba(239,248,231,.08) 41%,rgba(239,248,231,.03) 70%,rgba(239,248,231,.18) 100%);
   }
   .hero-visual::after {
-    content:"Maureen\\A Aiko Sumida (OVAL SISTEM)";
+    content:"Maureen\A Aiko Sumida (OVAL SISTEM)";
     white-space:pre-line;
     background:none;
     left:41%;
