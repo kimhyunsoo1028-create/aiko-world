@@ -23,7 +23,7 @@ if(!html.includes('</head>'))throw new Error('AIKO WORLD v32: HTML head was not 
 // Original element structure, page content and interactive controls remain intact.
 html=html.replace(/<link\b[^>]*href=["'][^"']*hero-v(?:28|29-rent-bg|30-match-mockup|31-exact-target|32-clean)\.css[^"']*["'][^>]*>\s*/gi,'');
 fs.copyFileSync(src,dst);
-const tag='<link rel="stylesheet" href="hero-v32-clean.css?v=32.1">';
+const tag='<link rel="stylesheet" href="hero-v32-clean.css?v=32.2">';
 html=html.replace('</head>',tag+'\n</head>');
 fs.writeFileSync(home,html,'utf8');
 console.log('AIKO WORLD v32: reference homepage hero rebuilt with one stylesheet; all other site content preserved.');
