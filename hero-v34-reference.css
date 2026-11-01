@@ -1,0 +1,107 @@
+/* AIKO WORLD v34 — reference-focused hero, one self-contained stylesheet.
+   Only the public landing banner is styled. No changes to CMS, menu,
+   translations, concerts, calendars, uploads, database or original photos. */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:linear-gradient(100deg,#f2f9ee 0%,#edf7e7 52%,#e8f4e2 100%);
+}
+/* The original 1080x290 RENT/Maureen photo lives in ONE masked layer.
+   The radial feather ends before its native image edge: no square seam. */
+.hero::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:395px;
+  display:block;z-index:0;pointer-events:none;
+  background-image:url("images/hero-rent-maureen-bg.webp");
+  background-repeat:no-repeat;background-size:min(1380px,98vw) auto;
+  background-position:center top;opacity:.72;
+  filter:grayscale(1) blur(1.8px) brightness(1.16) contrast(1.02);
+  -webkit-mask-image:radial-gradient(ellipse 42% 94% at 53% 0%,#000 0%,rgba(0,0,0,.94) 25%,rgba(0,0,0,.80) 42%,rgba(0,0,0,.34) 71%,transparent 100%);
+  mask-image:radial-gradient(ellipse 42% 94% at 53% 0%,#000 0%,rgba(0,0,0,.94) 25%,rgba(0,0,0,.80) 42%,rgba(0,0,0,.34) 71%,transparent 100%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;display:block;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(243,250,239,.77) 0%,rgba(243,250,239,.52) 22%,rgba(243,250,239,.12) 38%,transparent 62%,rgba(243,250,239,.11) 100%);
+}
+.hero>.hero-grid{position:relative;z-index:1}
+.hero>.hero-deco{z-index:0}
+.hero-content{position:relative;z-index:2}
+.hero-visual{position:relative;isolation:isolate}
+/* The original poster already contains both the RENT logo and Maureen credit.
+   Remove duplicate separately cropped image rectangles. */
+.hero-visual::before,.hero-visual::after{content:none!important;display:none!important}
+.hero-visual .photo-block{
+  display:block;box-sizing:border-box;padding:7px;background:#fff;
+  border:1px solid rgba(255,255,255,.8);border-radius:6px;overflow:hidden;
+  filter:none;box-shadow:0 10px 26px rgba(37,76,47,.12),0 2px 6px rgba(37,76,47,.055);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.hero-visual .photo-block img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center}
+.hero-visual .photo-five img{object-fit:contain;object-position:center center;background:#f7f7f7}
+.hero-visual .photo-block:hover{transform:translateY(-6px) rotate(0deg);z-index:9;box-shadow:0 14px 32px rgba(37,76,47,.18)}
+.hero-visual .visual-shape-1{left:5%;top:16%;width:72%;height:68%;opacity:.76}
+@media(min-width:1120px){
+ .hero>.hero-grid{width:82%;max-width:1450px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:27px;min-height:clamp(625px,45.8vw,765px)}
+ .hero-content{padding:clamp(54px,4.2vw,72px) 0 35px}
+ .hero h1{font-size:clamp(68px,5.08vw,84px)}
+ .hero-visual{width:calc(100% + 65px);height:clamp(590px,42.8vw,715px);margin:0 0 0 -25px}
+ .hero-visual .photo-five{left:24%;top:12%;width:49%;height:85%;z-index:6;transform:rotate(3deg);padding:8px}
+ .hero-visual .photo-three{left:-2%;top:24%;width:23%;height:35%;z-index:2;transform:rotate(-4deg)}
+ .hero-visual .photo-one{left:-8%;bottom:9%;top:auto;width:25%;height:37%;z-index:4;transform:rotate(-7deg)}
+ .hero-visual .photo-two{right:5%;left:auto;top:22%;width:25%;height:34%;z-index:3;transform:rotate(7deg)}
+ .hero-visual .photo-four{right:6%;left:auto;bottom:10%;top:auto;width:26%;height:38%;z-index:4;transform:rotate(7deg)}
+ .hero-visual .sticker{left:6%;top:7%;width:90px;height:90px;z-index:8}
+ .hero-visual .visual-label{right:0%;top:4%;z-index:8}
+ .hero-visual .visual-caption{left:34%;bottom:-3%;z-index:7}
+}
+@media(min-width:1550px){
+ .hero::before{background-size:1440px auto;opacity:.70}
+ .hero-visual{width:calc(100% + 90px);margin-left:-8px}
+ .hero-visual .photo-five{left:24%;top:12%;width:49%;height:85%}
+ .hero-visual .photo-three{top:20%}
+ .hero-visual .photo-two{top:19%}
+ .hero-visual .photo-one{bottom:9.5%}
+ .hero-visual .photo-four{bottom:8.5%}
+ .hero-visual .sticker{top:7%}
+}
+@media(min-width:921px) and (max-width:1119px){
+ .hero::before{background-size:1130px auto;opacity:.44}
+ .hero-visual .photo-five{left:34%;top:15%;width:48%;height:75%;z-index:6;transform:rotate(3deg)}
+ .hero-visual .photo-three{left:16%;top:17%;width:28%;height:40%;z-index:2;transform:rotate(-4deg)}
+ .hero-visual .photo-one{left:1%;bottom:7%;width:30%;height:41%;z-index:4;transform:rotate(-7deg)}
+ .hero-visual .photo-two{right:0;top:19%;width:30%;height:39%;z-index:3;transform:rotate(7deg)}
+ .hero-visual .photo-four{right:0;bottom:7%;width:30%;height:39%;z-index:4;transform:rotate(7deg)}
+ .hero-visual .sticker{left:33%;top:3%;z-index:8}
+}
+@media(max-width:920px){
+ .hero::before{background-size:930px auto;background-position:center top;opacity:.30;
+  -webkit-mask-image:radial-gradient(ellipse 64% 92% at 51% 0%,#000 4%,rgba(0,0,0,.50) 53%,transparent 100%);
+  mask-image:radial-gradient(ellipse 64% 92% at 51% 0%,#000 4%,rgba(0,0,0,.50) 53%,transparent 100%)}
+ .hero::after{background:linear-gradient(180deg,rgba(243,250,239,.66),rgba(243,250,239,.35) 48%,transparent)}
+ .hero-visual .photo-five{left:35%;top:69px;width:48%;height:76%;z-index:6;transform:rotate(3deg)}
+ .hero-visual .photo-three{left:14%;top:78px;width:31%;height:39%;z-index:2;transform:rotate(-4deg)}
+ .hero-visual .photo-two{right:0;top:83px;width:31%;height:40%;z-index:3;transform:rotate(7deg)}
+ .hero-visual .photo-one{left:1%;bottom:29px;width:31%;height:42%;z-index:4;transform:rotate(-7deg)}
+ .hero-visual .photo-four{right:0;bottom:23px;width:31%;height:40%;z-index:4;transform:rotate(7deg)}
+ .hero-visual .sticker{left:33%;top:6px;z-index:8}
+ .hero-visual .visual-caption{left:45%;bottom:0;z-index:7}
+}
+@media(max-width:700px){
+ .hero::before{background-size:790px auto;opacity:.19}
+ .hero-visual{height:470px;margin:10px auto 2px;width:min(100%,510px)}
+ .hero-visual .photo-five{left:35%;top:65px;width:48%;height:76%}
+ .hero-visual .photo-one{left:1%;bottom:24px;width:31%;height:42%}
+ .hero-visual .photo-two{right:0;top:85px;width:31%;height:40%}
+ .hero-visual .photo-three{left:14%;top:89px;width:31%;height:39%}
+ .hero-visual .photo-four{right:0;bottom:23px;width:31%;height:40%}
+ .hero-visual .sticker{width:69px;height:69px;left:33%;top:6px}
+}
+@media(max-width:410px){
+ .hero-visual{height:365px}
+ .hero-visual .photo-block{padding:4px}
+ .hero-visual .photo-five{left:34%;width:49%;height:75%;top:52px}
+ .hero-visual .photo-one{bottom:21px}
+ .hero-visual .photo-two{top:67px}
+ .hero-visual .photo-three{top:69px}
+ .hero-visual .photo-four{bottom:19px}
+ .hero-visual .sticker{width:56px;height:56px;left:33%;top:1px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.hero-visual .photo-block{transition:none}}
