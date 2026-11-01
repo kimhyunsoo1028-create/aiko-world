@@ -71,3 +71,43 @@
  .hero::before{width:460px;height:310px;left:calc(50vw - 240px);top:15px;background-size:1100px auto;opacity:.18;filter:grayscale(1) blur(7px)}
  .hero::after{background:linear-gradient(180deg,rgba(239,248,231,.84) 0%,rgba(239,248,231,.51) 58%,rgba(239,248,231,.18) 100%)}
 }
+
+/* AIKO WORLD v31.3: approved-reference desktop background correction.
+ * The 1406px live viewport uses a different breakpoint than the 1672px reference.
+ * Restore the larger, recognizable monochrome Maureen face without moving any cards,
+ * changing content, or touching uploaded images. */
+@media (min-width:1120px) and (max-width:1549px) {
+  .hero::before {
+    width:860px;
+    height:520px;
+    left:calc(50vw - 480px);
+    top:-48px;
+    background-size:1720px auto;
+    opacity:.72;
+    filter:grayscale(1) blur(2.5px) contrast(1.08) brightness(1.08);
+    -webkit-mask-image:radial-gradient(ellipse 64% 68% at 50% 41%,#000 12%,rgba(0,0,0,.87) 54%,transparent 100%);
+    mask-image:radial-gradient(ellipse 64% 68% at 50% 41%,#000 12%,rgba(0,0,0,.87) 54%,transparent 100%);
+  }
+  .hero::after {
+    background:linear-gradient(90deg,rgba(239,248,231,.88) 0%,rgba(239,248,231,.52) 23%,rgba(239,248,231,.08) 41%,rgba(239,248,231,.03) 70%,rgba(239,248,231,.18) 100%);
+  }
+  .hero-visual::after {
+    content:"Maureen\\A Aiko Sumida (OVAL SISTEM)";
+    white-space:pre-line;
+    background:none;
+    left:41%;
+    top:-7px;
+    width:380px;
+    height:120px;
+    color:rgba(235,243,232,.7);
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:clamp(22px,2.1vw,32px);
+    font-weight:650;
+    line-height:1.02;
+    letter-spacing:-.045em;
+    text-shadow:0 1px 6px rgba(45,62,42,.55);
+    transform:rotate(-5deg);
+    opacity:.57;
+    filter:blur(1.7px);
+  }
+}
