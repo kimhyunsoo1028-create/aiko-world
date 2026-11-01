@@ -1,0 +1,72 @@
+/* AIKO WORLD v30 – align live hero to the approved RENT/Maureen five-card mockup.
+   Visual-only: do not modify CMS, performances, albums or existing photos. */
+.hero { isolation:isolate; background:#eef8e8; }
+.hero::before {
+  content:"";display:block;position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('images/hero-rent-maureen-bg.webp') no-repeat;
+  background-size:auto 480px;
+  background-position:left 23vw top -16px;
+  opacity:.52;filter:grayscale(1) blur(4.5px) contrast(1.05);
+  -webkit-mask-image:radial-gradient(ellipse 53% 39% at 61% 22%,#000 8%,rgba(0,0,0,.80) 35%,rgba(0,0,0,.30) 67%,transparent 98%);
+  mask-image:radial-gradient(ellipse 53% 39% at 61% 22%,#000 8%,rgba(0,0,0,.80) 35%,rgba(0,0,0,.30) 67%,transparent 98%);
+}
+.hero::after {
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(239,248,231,.90) 0%,rgba(239,248,231,.70) 27%,rgba(239,248,231,.19) 48%,rgba(239,248,231,.10) 74%,rgba(239,248,231,.32) 100%);
+}
+.hero > .hero-grid {position:relative;z-index:1;}
+.hero-visual {isolation:isolate;}
+.hero-visual::before,.hero-visual::after {content:"";position:absolute;pointer-events:none;z-index:-1;background-image:url('images/hero-rent-maureen-bg.webp');background-repeat:no-repeat;}
+/* Small, softened RENT mark behind the cards, rather than a giant black rectangle. */
+.hero-visual::before {
+  content:'RENT';width:160px;height:65px;left:-14%;top:38%;
+  background:none;display:flex;align-items:center;justify-content:center;
+  color:rgba(24,30,29,.22);font-size:39px;font-weight:950;letter-spacing:.14em;
+  text-shadow:0 0 4px rgba(22,31,30,.19);transform:rotate(-7deg);filter:blur(2.2px);
+  -webkit-mask-image:radial-gradient(ellipse 85% 87% at 50% 50%,#000 40%,transparent 99%);
+  mask-image:radial-gradient(ellipse 85% 87% at 50% 50%,#000 40%,transparent 99%);
+}
+/* Faint original Maureen / Aiko Sumida credit at the upper right. */
+.hero-visual::after {
+  width:385px;height:113px;right:4%;top:-12px;
+  background-size:1080px auto;background-position:100% 94%;
+  opacity:.19;filter:grayscale(1) blur(3.5px);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 20%,#000 85%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 20%,#000 85%,transparent 100%);
+}
+@media (min-width:1200px) {
+  .hero > .hero-grid {width:min(1310px,calc(100% - 110px));grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:24px;}
+  .hero-visual {height:620px;width:calc(100% + 85px);margin-left:-15px;}
+  .hero-visual .photo-five {width:46%;height:82%;left:31%;top:83px;}
+  .hero-visual .photo-one {left:1%;width:29%;height:44%;bottom:27px;}
+  .hero-visual .photo-three {left:9%;top:116px;width:27%;height:42%;}
+  .hero-visual .photo-two {right:0%;top:114px;width:29%;height:40%;}
+  .hero-visual .photo-four {right:1%;bottom:28px;width:29%;height:40%;}
+  .hero-visual .sticker {left:34%;top:16px;}
+  .hero-visual .visual-label {top:22px;right:0%;}
+  .hero-visual .visual-caption {bottom:0;left:46%;}
+}
+@media (min-width:1550px) {
+  .hero > .hero-grid {width:min(1390px,calc(100% - 120px));min-height:742px;gap:26px;}
+  .hero-visual {height:705px;width:calc(100% + 100px);margin-left:-20px;}
+  .hero-visual .photo-five {width:46%;height:83%;left:31%;top:92px;}
+  .hero-visual .photo-three {top:130px;}
+  .hero-visual .photo-two {top:133px;}
+  .hero-visual::before {left:-14%;top:38%;}
+  .hero-visual::after {top:0;right:6%;}
+}
+@media (max-width:1199px) {
+  .hero::before {background-size:auto 450px;background-position:left 28vw top -24px;opacity:.28;}
+  .hero-visual::before {left:-15%;top:36%;opacity:.19;}
+  .hero-visual::after {right:0;top:0;opacity:.15;}
+}
+@media (max-width:920px) {
+  .hero::before {background-size:auto 450px;background-position:left 18vw top 0;opacity:.18;}
+  .hero::after {background:linear-gradient(90deg,rgba(239,248,231,.88),rgba(239,248,231,.40) 60%,rgba(239,248,231,.30));}
+  .hero-visual::before,.hero-visual::after {display:none;}
+}
+@media (max-width:700px) {
+  .hero::before {background-size:auto 380px;background-position:left 7vw top 28px;opacity:.14;filter:grayscale(1) blur(7px);
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 79%);mask-image:linear-gradient(180deg,#000 0%,transparent 79%);}
+  .hero::after {background:linear-gradient(180deg,rgba(239,248,231,.87) 0%,rgba(239,248,231,.68) 55%,rgba(239,248,231,.24) 100%);}
+}
