@@ -1,18 +1,23 @@
-/** AIKO WORLD v34: one-step homepage hero application via EXISTING Netlify build command.
- * Reuses prior installer hook. Keeps every actual photo, site link, admin and CMS record.
- */
+/** AIKO WORLD v44 — single Netlify hook, homepage hero only.
+ * Keeps site database, admin, event data and all five original card image references intact. */
 'use strict';
-const fs=require('node:fs');
-const path=require('node:path');
-const root=process.cwd(),page=path.join(root,'public','index.html');
-const source=path.join(root,'hero-v34-reference.css');
-const original=path.join(root,'public','images','hero-rent-maureen-bg.webp');
-if(![page,source,original].every(p=>fs.existsSync(p)))throw Error('v34: homepage or original hero asset missing');
-let html=fs.readFileSync(page,'utf8');
-if(!html.includes('class="hero-visual"')||!html.includes('photo-five')||!html.includes('</head>'))throw Error('v34: expected five-card homepage not present; aborting');
-const obsolete=/<link\b[^>]*href=["'][^"']*hero-v(?:28|29-rent-bg|30-match-mockup|31-exact-target|32-clean|33-reference|34-reference)\.css[^"']*["'][^>]*>\s*/gi;
+const fs=require('node:fs'),path=require('node:path');
+const root=process.cwd(),pub=path.join(root,'public');
+const htmlPath=path.join(pub,'index.html');
+const sourceCss=path.join(root,'hero-v44-reference.css');
+const sourcePhoto=path.join(root,'images','maureen-rent-full-feather-v43.webp');
+for(const file of [htmlPath,sourceCss,sourcePhoto]){
+ if(!fs.existsSync(file))throw new Error('[AIKO v44] Required file missing: '+file);
+}
+let html=fs.readFileSync(htmlPath,'utf8');
+if(!html.includes('hero-visual')||!html.includes('photo-five')||!html.includes('</head>')){
+ throw new Error('[AIKO v44] Expected 5-photo home is missing; aborting');
+}
+const obsolete=/<link\b[^>]*href=["'][^"']*hero-v(?:28|29-rent-bg|30-match-mockup|31-exact-target|32-clean|33-reference|34-reference|35-adjustments|36-reference|37-reference|38-reference|39-reference|40-reference|41-reference|42-clean|43-original|44-original|44-reference)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi;
 html=html.replace(obsolete,'');
-fs.copyFileSync(source,path.join(root,'public','hero-v34-reference.css'));
-html=html.replace('</head>','<link rel="stylesheet" href="hero-v34-reference.css?v=34.0">\n</head>');
-fs.writeFileSync(page,html,'utf8');
-console.log('[AIKO WORLD v34] Original homepage text and five photos preserved; new single hero style applied.');
+fs.mkdirSync(path.join(pub,'images'),{recursive:true});
+fs.copyFileSync(sourceCss,path.join(pub,'hero-v44-reference.css'));
+fs.copyFileSync(sourcePhoto,path.join(pub,'images','maureen-rent-full-feather-v43.webp'));
+html=html.replace('</head>','<link rel="stylesheet" href="hero-v44-reference.css?v=44.0">\n</head>');
+fs.writeFileSync(htmlPath,html,'utf8');
+console.log('[AIKO WORLD v44] Hero CSS & background installed, other sections unchanged.');

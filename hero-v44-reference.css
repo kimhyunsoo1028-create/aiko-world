@@ -1,0 +1,171 @@
+/* AIKO WORLD v34 — reference-focused hero, one self-contained stylesheet.
+   Only the public landing banner is styled. No changes to CMS, menu,
+   translations, concerts, calendars, uploads, database or original photos. */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:linear-gradient(100deg,#f2f9ee 0%,#edf7e7 52%,#e8f4e2 100%);
+}
+/* The original 1080x290 RENT/Maureen photo lives in ONE masked layer.
+   The radial feather ends before its native image edge: no square seam. */
+.hero::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:395px;
+  display:block;z-index:0;pointer-events:none;
+  background-image:url("images/hero-rent-maureen-bg.webp");
+  background-repeat:no-repeat;background-size:min(1380px,98vw) auto;
+  background-position:center top;opacity:.72;
+  filter:grayscale(1) blur(1.8px) brightness(1.16) contrast(1.02);
+  -webkit-mask-image:radial-gradient(ellipse 42% 94% at 53% 0%,#000 0%,rgba(0,0,0,.94) 25%,rgba(0,0,0,.80) 42%,rgba(0,0,0,.34) 71%,transparent 100%);
+  mask-image:radial-gradient(ellipse 42% 94% at 53% 0%,#000 0%,rgba(0,0,0,.94) 25%,rgba(0,0,0,.80) 42%,rgba(0,0,0,.34) 71%,transparent 100%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;display:block;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(243,250,239,.77) 0%,rgba(243,250,239,.52) 22%,rgba(243,250,239,.12) 38%,transparent 62%,rgba(243,250,239,.11) 100%);
+}
+.hero>.hero-grid{position:relative;z-index:1}
+.hero>.hero-deco{z-index:0}
+.hero-content{position:relative;z-index:2}
+.hero-visual{position:relative;isolation:isolate}
+/* The original poster already contains both the RENT logo and Maureen credit.
+   Remove duplicate separately cropped image rectangles. */
+.hero-visual::before,.hero-visual::after{content:none!important;display:none!important}
+.hero-visual .photo-block{
+  display:block;box-sizing:border-box;padding:7px;background:#fff;
+  border:1px solid rgba(255,255,255,.8);border-radius:6px;overflow:hidden;
+  filter:none;box-shadow:0 10px 26px rgba(37,76,47,.12),0 2px 6px rgba(37,76,47,.055);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.hero-visual .photo-block img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center}
+.hero-visual .photo-five img{object-fit:contain;object-position:center center;background:#f7f7f7}
+.hero-visual .photo-block:hover{transform:translateY(-6px) rotate(0deg);z-index:9;box-shadow:0 14px 32px rgba(37,76,47,.18)}
+.hero-visual .visual-shape-1{left:5%;top:16%;width:72%;height:68%;opacity:.76}
+@media(min-width:1120px){
+ .hero>.hero-grid{width:82%;max-width:1450px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:27px;min-height:clamp(625px,45.8vw,765px)}
+ .hero-content{padding:clamp(54px,4.2vw,72px) 0 35px}
+ .hero h1{font-size:clamp(68px,5.08vw,84px)}
+ .hero-visual{width:calc(100% + 65px);height:clamp(590px,42.8vw,715px);margin:0 0 0 -25px}
+ .hero-visual .photo-five{left:24%;top:12%;width:49%;height:85%;z-index:6;transform:rotate(3deg);padding:8px}
+ .hero-visual .photo-three{left:-2%;top:24%;width:23%;height:35%;z-index:2;transform:rotate(-4deg)}
+ .hero-visual .photo-one{left:-8%;bottom:9%;top:auto;width:25%;height:37%;z-index:4;transform:rotate(-7deg)}
+ .hero-visual .photo-two{right:5%;left:auto;top:22%;width:25%;height:34%;z-index:3;transform:rotate(7deg)}
+ .hero-visual .photo-four{right:6%;left:auto;bottom:10%;top:auto;width:26%;height:38%;z-index:4;transform:rotate(7deg)}
+ .hero-visual .sticker{left:6%;top:7%;width:90px;height:90px;z-index:8}
+ .hero-visual .visual-label{right:0%;top:4%;z-index:8}
+ .hero-visual .visual-caption{left:34%;bottom:-3%;z-index:7}
+}
+@media(min-width:1550px){
+ .hero::before{background-size:1440px auto;opacity:.70}
+ .hero-visual{width:calc(100% + 90px);margin-left:-8px}
+ .hero-visual .photo-five{left:24%;top:12%;width:49%;height:85%}
+ .hero-visual .photo-three{top:20%}
+ .hero-visual .photo-two{top:19%}
+ .hero-visual .photo-one{bottom:9.5%}
+ .hero-visual .photo-four{bottom:8.5%}
+ .hero-visual .sticker{top:7%}
+}
+@media(min-width:921px) and (max-width:1119px){
+ .hero::before{background-size:1130px auto;opacity:.44}
+ .hero-visual .photo-five{left:34%;top:15%;width:48%;height:75%;z-index:6;transform:rotate(3deg)}
+ .hero-visual .photo-three{left:16%;top:17%;width:28%;height:40%;z-index:2;transform:rotate(-4deg)}
+ .hero-visual .photo-one{left:1%;bottom:7%;width:30%;height:41%;z-index:4;transform:rotate(-7deg)}
+ .hero-visual .photo-two{right:0;top:19%;width:30%;height:39%;z-index:3;transform:rotate(7deg)}
+ .hero-visual .photo-four{right:0;bottom:7%;width:30%;height:39%;z-index:4;transform:rotate(7deg)}
+ .hero-visual .sticker{left:33%;top:3%;z-index:8}
+}
+@media(max-width:920px){
+ .hero::before{background-size:930px auto;background-position:center top;opacity:.30;
+  -webkit-mask-image:radial-gradient(ellipse 64% 92% at 51% 0%,#000 4%,rgba(0,0,0,.50) 53%,transparent 100%);
+  mask-image:radial-gradient(ellipse 64% 92% at 51% 0%,#000 4%,rgba(0,0,0,.50) 53%,transparent 100%)}
+ .hero::after{background:linear-gradient(180deg,rgba(243,250,239,.66),rgba(243,250,239,.35) 48%,transparent)}
+ .hero-visual .photo-five{left:35%;top:69px;width:48%;height:76%;z-index:6;transform:rotate(3deg)}
+ .hero-visual .photo-three{left:14%;top:78px;width:31%;height:39%;z-index:2;transform:rotate(-4deg)}
+ .hero-visual .photo-two{right:0;top:83px;width:31%;height:40%;z-index:3;transform:rotate(7deg)}
+ .hero-visual .photo-one{left:1%;bottom:29px;width:31%;height:42%;z-index:4;transform:rotate(-7deg)}
+ .hero-visual .photo-four{right:0;bottom:23px;width:31%;height:40%;z-index:4;transform:rotate(7deg)}
+ .hero-visual .sticker{left:33%;top:6px;z-index:8}
+ .hero-visual .visual-caption{left:45%;bottom:0;z-index:7}
+}
+@media(max-width:700px){
+ .hero::before{background-size:790px auto;opacity:.19}
+ .hero-visual{height:470px;margin:10px auto 2px;width:min(100%,510px)}
+ .hero-visual .photo-five{left:35%;top:65px;width:48%;height:76%}
+ .hero-visual .photo-one{left:1%;bottom:24px;width:31%;height:42%}
+ .hero-visual .photo-two{right:0;top:85px;width:31%;height:40%}
+ .hero-visual .photo-three{left:14%;top:89px;width:31%;height:39%}
+ .hero-visual .photo-four{right:0;bottom:23px;width:31%;height:40%}
+ .hero-visual .sticker{width:69px;height:69px;left:33%;top:6px}
+}
+@media(max-width:410px){
+ .hero-visual{height:365px}
+ .hero-visual .photo-block{padding:4px}
+ .hero-visual .photo-five{left:34%;width:49%;height:75%;top:52px}
+ .hero-visual .photo-one{bottom:21px}
+ .hero-visual .photo-two{top:67px}
+ .hero-visual .photo-three{top:69px}
+ .hero-visual .photo-four{bottom:19px}
+ .hero-visual .sticker{width:56px;height:56px;left:33%;top:1px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.hero-visual .photo-block{transition:none}}
+
+
+/* AIKO WORLD v44.0, user-approved 2026-11-02: PC backdrop richer; mobile proportional and smaller.
+   Only the homepage hero is altered; photos, menus, links and admin remain untouched. */
+.hero{background:linear-gradient(112deg,#f1f9ed 0%,#edf7e7 50%,#e8f5e3 100%)!important;}
+.hero::before{
+ content:""!important;display:block!important;position:absolute!important;inset:auto!important;
+ left:clamp(100px,7.8vw,130px)!important;top:-8px!important;
+ width:clamp(1040px,72vw,1200px)!important;height:clamp(310px,22.2vw,372px)!important;
+ z-index:0!important;pointer-events:none!important;
+ background-image:url("images/maureen-rent-full-feather-v43.webp")!important;
+ background-size:100% 100%!important;background-position:left top!important;background-repeat:no-repeat!important;
+ opacity:.82!important;filter:contrast(1.07) brightness(.99) blur(.35px)!important;
+ -webkit-mask-image:none!important;mask-image:none!important;
+}
+.hero::after{
+ content:""!important;display:block!important;position:absolute!important;inset:0!important;
+ z-index:0!important;pointer-events:none!important;
+ background:linear-gradient(90deg,rgba(244,250,240,.82) 0%,rgba(244,250,240,.42) 21%,rgba(244,250,240,.05) 37%,transparent 58%,rgba(239,248,234,.12) 100%)!important;
+}
+.hero .hero-visual::before{content:none!important;display:none!important;}
+@media(min-width:1120px){
+ .hero .hero-grid{width:82%;max-width:1450px;min-height:clamp(625px,45.8vw,765px)}
+ .hero .photo-five{left:24%!important;top:10%!important;width:47%!important;height:86%!important;z-index:6!important;padding:6px!important}
+ .hero .photo-five img{object-fit:cover!important;object-position:center center!important}
+ .hero .photo-three{left:-1%!important;top:22%!important;width:21%!important;height:34%!important}
+ .hero .photo-one{left:-7%!important;bottom:9%!important;width:23%!important;height:37%!important}
+ .hero .photo-two{right:5%!important;top:21%!important;width:21%!important;height:33%!important}
+ .hero .photo-four{right:9%!important;bottom:10%!important;width:25%!important;height:38%!important}
+ .hero .sticker{left:5%!important;top:4%!important;width:88px!important;height:88px!important}
+ .hero .visual-label{right:11%!important;top:5.5%!important}
+ .hero .visual-caption{left:39%!important;bottom:-3%!important}
+ .hero .hero-visual::after{
+   content:"Maureen\A Aiko Sumida (OVAL SISTEM)"!important;display:block!important;
+   position:absolute!important;left:38%!important;top:-4%!important;width:420px!important;
+   height:104px!important;white-space:pre-line!important;z-index:1!important;pointer-events:none!important;
+   background:none!important;opacity:.64!important;color:#eaf4e5!important;
+   font:600 clamp(18px,1.9vw,30px)/1.03 Arial,sans-serif!important;
+   text-shadow:0 1px 7px rgba(40,55,43,.5)!important;
+   letter-spacing:-.04em!important;filter:blur(1.7px)!important;transform:rotate(-5deg)!important;
+ }
+}
+@media(min-width:1550px){
+ .hero .hero-visual{width:calc(100% + 90px);margin-left:-5px;height:715px;}
+ .hero .photo-five{left:24%!important;top:10%!important;width:47%!important;height:86%!important}
+}
+@media(min-width:921px) and (max-width:1119px){
+ .hero::before{left:12vw!important;width:1100px!important;top:0!important;opacity:.62!important;filter:blur(.45px) contrast(1.05)!important}
+}
+@media(max-width:920px){
+ .hero::before{
+   left:50%!important;top:11px!important;right:auto!important;bottom:auto!important;
+   width:min(96vw,480px)!important;height:auto!important;aspect-ratio:1080/296!important;
+   transform:translateX(-50%)!important;opacity:.44!important;
+   background-size:100% 100%!important;background-position:center!important;
+   filter:grayscale(1) contrast(1.08) brightness(1.04) blur(.35px)!important;
+   -webkit-mask-image:none!important;mask-image:none!important;
+ }
+ .hero::after{
+  background:linear-gradient(180deg,rgba(243,250,239,.18) 0%,rgba(243,250,239,.20) 20%,rgba(243,250,239,.05) 35%,transparent 50%)!important;
+ }
+ .hero .hero-visual::after{content:none!important;display:none!important}
+}
+@media(max-width:410px){.hero::before{width:96vw!important;top:13px!important;opacity:.43!important}}
