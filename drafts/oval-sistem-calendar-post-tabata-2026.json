@@ -6,7 +6,7 @@
   "public_site_changes": false,
   "requires_cms_import": true,
   "description_ko": "공식 및 공연 주최측 자료로 확인한 TABATA 2.0 이후 일정 후보. 공개 배포하지 않은 조사 초안이며 Supabase CMS에는 자동 반영되지 않음.",
-  "count": 33,
+  "count": 35,
   "entries": [
     {
       "id": "oval-tour-2026-2-1",
@@ -135,6 +135,38 @@
       "is_published": false,
       "notes_ko": "",
       "evidence": "confirmed"
+    },
+    {
+      "id": "oval-wuwa-together-2026-1",
+      "date": "2026-02-07",
+      "start_time": null,
+      "timezone": "Asia/Tokyo",
+      "title_ko": "OVAL SISTEM · 명조 WUWA TOGETHER · 1일차",
+      "title_ja": "OVAL SISTEM · 鳴潮スペシャルライブ WUWA TOGETHER · DAY 1",
+      "title_en": "OVAL SISTEM · WUWA TOGETHER · Day 1",
+      "venue": null,
+      "category": "festival",
+      "source_url": "https://teapawt.net/OVAL_SISTEM?filter=highlights",
+      "status": "draft",
+      "is_published": false,
+      "notes_ko": "공식 X에서 1일차 출연 및 두 곡 공연 확인. 장소 확인 중.",
+      "evidence": "date-confirmed"
+    },
+    {
+      "id": "oval-wuwa-together-2026-2",
+      "date": "2026-02-08",
+      "start_time": null,
+      "timezone": "Asia/Tokyo",
+      "title_ko": "OVAL SISTEM · 명조 WUWA TOGETHER · 2일차",
+      "title_ja": "OVAL SISTEM · 鳴潮スペシャルライブ WUWA TOGETHER · DAY 2",
+      "title_en": "OVAL SISTEM · WUWA TOGETHER · Day 2",
+      "venue": null,
+      "category": "festival",
+      "source_url": "https://teapawt.net/OVAL_SISTEM?filter=highlights",
+      "status": "draft",
+      "is_published": false,
+      "notes_ko": "2일차 공연 예정 시간 11:24·15:24 경이라는 공식 SNS 사전 공지. 장소는 확인 중.",
+      "evidence": "date-confirmed"
     },
     {
       "id": "oval-tour-2026-2-7",
