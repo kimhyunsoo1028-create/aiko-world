@@ -21,3 +21,19 @@ fs.copyFileSync(sourcePhoto,path.join(pub,'images','maureen-rent-full-feather-v4
 html=html.replace('</head>','<link rel="stylesheet" href="hero-v44-reference.css?v=44.0">\n</head>');
 fs.writeFileSync(htmlPath,html,'utf8');
 console.log('[AIKO WORLD v44] Hero CSS & background installed, other sections unchanged.');
+
+/* AIKO WORLD v48: install the unified-manager refresh/reference overlay.
+ * Does not alter homepage files, databases, or existing performance records. */
+const shimSrc=path.join(root,'stage-v48-shima-admin.js');
+const shimDir=path.join(pub,'admin');
+const shimDest=path.join(shimDir,'stage-v48-shima-admin.js');
+const adminIndex=path.join(shimDir,'index.html');
+if(fs.existsSync(shimSrc)&&fs.existsSync(adminIndex)){
+  fs.copyFileSync(shimSrc,shimDest);
+  let adminHtml=fs.readFileSync(adminIndex,'utf8');
+  if(!adminHtml.includes('stage-v48-shima-admin.js') && /<\/body>/i.test(adminHtml)){
+    adminHtml=adminHtml.replace(/<\/body>/i,'<script defer src="./stage-v48-shima-admin.js?v=48"></script>\n</body>');
+    fs.writeFileSync(adminIndex,adminHtml,'utf8');
+  }
+  console.log('[AIKO WORLD v48] Shima Fes admin reference and refresh overlay installed.');
+}
