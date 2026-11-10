@@ -9,7 +9,7 @@
     id: SHOW_ID,
     date: '2026-05-02',
     time: '20:15',
-    title: 'OVAL SISTEM · シマフェス',
+    title: 'OVAL SISTEM · 시마페스 (シマフェス)',
     series: 'festival',
     venue: 'unravel tokyo (六本木), 도쿄',
     city: '東京・六本木',
