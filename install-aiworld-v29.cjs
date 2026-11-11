@@ -47,3 +47,12 @@ if(fs.existsSync(radioV49Zip)){
   if(!fs.existsSync(radioInstaller))throw new Error('[AIKO v49] Radio installer missing after unzip');
   require(radioInstaller);
 }
+
+/* AIKO WORLD v50 BROADCAST SPLIT — correct HOP radio vs OVAL Wednesday broadcasts. */
+const splitV50Zip=path.join(root,'AIKO_WORLD_v50_radio_broadcast_split.zip');
+if(fs.existsSync(splitV50Zip)){
+  require('node:child_process').execFileSync('unzip',['-o',splitV50Zip],{cwd:root,stdio:'pipe'});
+  const splitV50Installer=path.join(root,'install-aiworld-v50.cjs');
+  if(!fs.existsSync(splitV50Installer))throw new Error('[AIKO v50] Installer missing after unzip');
+  require(splitV50Installer);
+}
