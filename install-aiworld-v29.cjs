@@ -37,3 +37,13 @@ if(fs.existsSync(shimSrc)&&fs.existsSync(adminIndex)){
   }
   console.log('[AIKO WORLD v48] Shima Fes admin reference and refresh overlay installed.');
 }
+
+/* AIKO WORLD v49 RADIO — additive archive install, safe for repeated deploys.
+ * Existing site files remain intact; only links new radio JS/CSS after prior base build. */
+const radioV49Zip=path.join(root,'AIKO_WORLD_v49_radio_archive_patch.zip');
+if(fs.existsSync(radioV49Zip)){
+  require('node:child_process').execFileSync('unzip',['-o',radioV49Zip],{cwd:root,stdio:'pipe'});
+  const radioInstaller=path.join(root,'install-aiworld-radio-v49.cjs');
+  if(!fs.existsSync(radioInstaller))throw new Error('[AIKO v49] Radio installer missing after unzip');
+  require(radioInstaller);
+}
